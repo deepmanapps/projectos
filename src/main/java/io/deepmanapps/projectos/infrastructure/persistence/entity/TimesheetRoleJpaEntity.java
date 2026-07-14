@@ -10,9 +10,8 @@ import lombok.Data;
 public class TimesheetRoleJpaEntity {
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "timesheetId")
-    private TimesheetJpaEntity timesheet;
+    @Column(name = "timesheet_id")
+    private String timesheetId;
 
     @Id
     @Column(name = "party_id")
@@ -21,4 +20,8 @@ public class TimesheetRoleJpaEntity {
     @Id
     @Column(name = "role_type_id")
     private String roleTypeId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "timesheet_id", insertable = false, updatable = false)
+    private TimesheetJpaEntity timesheet;
 }

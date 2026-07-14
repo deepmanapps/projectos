@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkEffortReviewId implements Serializable {
-    private String workEffort;
-    private String userLogin;
+    private String workEffortId;
+    private String userLoginId;
     private LocalDateTime reviewDate;
 }

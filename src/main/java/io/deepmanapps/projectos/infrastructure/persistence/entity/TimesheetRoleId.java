@@ -10,7 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TimesheetRoleId implements Serializable {
-    private String timesheet;
+    private String timesheetId;
     private String partyId;
     private String roleTypeId;
 }

@@ -2,6 +2,7 @@ package io.deepmanapps.projectos.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import java.util.List;
 
 @Entity
 @Table(name = "work_effort_type")
@@ -19,4 +20,10 @@ public class WorkEffortTypeJpaEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parentTypeId")
     private WorkEffortTypeJpaEntity parentType;
+
+    @OneToMany(mappedBy = "workEffortTypeId")
+    private List<WorkEffortJpaEntity> workEfforts;
+
+    @OneToMany(mappedBy = "workEffortType")
+    private List<WorkEffortTypeAttrJpaEntity> attributes;
 }

@@ -10,13 +10,18 @@ import lombok.Data;
 public class WorkEffortTransBoxJpaEntity {
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "processWorkEffortId")
-    private WorkEffortJpaEntity processWorkEffort;
+    @Column(name = "process_work_effort_id")
+    private String processWorkEffortId;
 
     @Id
+    @Column(name = "to_activity_id")
     private String toActivityId;
 
     @Id
+    @Column(name = "transition_id")
     private String transitionId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "process_work_effort_id", referencedColumnName = "workEffortId", insertable = false, updatable = false)
+    private WorkEffortJpaEntity processWorkEffort;
 }

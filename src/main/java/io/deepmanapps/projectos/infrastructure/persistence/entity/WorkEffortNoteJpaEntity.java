@@ -10,13 +10,19 @@ import lombok.Data;
 public class WorkEffortNoteJpaEntity {
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "workEffortId")
-    private WorkEffortJpaEntity workEffort;
+    @Column(name = "work_effort_id")
+    private String workEffortId;
 
     @Id
+    @Column(name = "note_id")
+    private String noteId;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "noteId")
+    @JoinColumn(name = "work_effort_id", insertable = false, updatable = false)
+    private WorkEffortJpaEntity workEffort;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "note_id", insertable = false, updatable = false)
     private NoteDataJpaEntity note;
 
     private Boolean internalNote;

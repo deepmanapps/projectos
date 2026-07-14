@@ -10,6 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkEffortNoteId implements Serializable {
-    private String workEffort;
-    private String note;
+    private String workEffortId;
+    private String noteId;
 }

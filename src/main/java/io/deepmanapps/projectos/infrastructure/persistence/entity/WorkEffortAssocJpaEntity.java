@@ -2,8 +2,8 @@ package io.deepmanapps.projectos.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "work_effort_assoc")
@@ -12,21 +12,32 @@ import java.time.LocalDateTime;
 public class WorkEffortAssocJpaEntity {
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "workEffortIdFrom")
-    private WorkEffortJpaEntity workEffortFrom;
+    @Column(name = "work_effort_id_from")
+    private String workEffortIdFrom;
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "workEffortIdTo")
-    private WorkEffortJpaEntity workEffortTo;
+    @Column(name = "work_effort_id_to")
+    private String workEffortIdTo;
 
     @Id
+    @Column(name = "work_effort_assoc_type_id")
     private String workEffortAssocTypeId;
 
     @Id
+    @Column(name = "from_date")
     private LocalDateTime fromDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "work_effort_id_from", referencedColumnName = "workEffortId", insertable = false, updatable = false)
+    private WorkEffortJpaEntity workEffortFrom;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "work_effort_id_to", referencedColumnName = "workEffortId", insertable = false, updatable = false)
+    private WorkEffortJpaEntity workEffortTo;
 
     private Integer sequenceNum;
     private LocalDateTime thruDate;
+
+    @OneToMany(mappedBy = "workEffortAssoc", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<WorkEffortAssocAttributeJpaEntity> attributes;
 }

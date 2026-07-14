@@ -2,7 +2,6 @@ package io.deepmanapps.projectos.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,17 +11,24 @@ import java.time.LocalDateTime;
 public class WorkEffortReviewJpaEntity {
 
     @Id
+    @Column(name = "work_effort_id")
+    private String workEffortId;
+
+    @Id
+    @Column(name = "user_login_id")
+    private String userLoginId;
+
+    @Id
+    @Column(name = "review_date")
+    private LocalDateTime reviewDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "workEffortId")
+    @JoinColumn(name = "work_effort_id", insertable = false, updatable = false)
     private WorkEffortJpaEntity workEffort;
 
-    @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userLoginId")
+    @JoinColumn(name = "user_login_id", insertable = false, updatable = false)
     private UserLoginJpaEntity userLogin;
-
-    @Id
-    private LocalDateTime reviewDate;
 
     private Boolean postedAnonymous;
     private Double rating;

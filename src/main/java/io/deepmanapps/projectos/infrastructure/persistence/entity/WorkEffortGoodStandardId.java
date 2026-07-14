@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkEffortGoodStandardId implements Serializable {
-    private String workEffort;
-    private String product;
-    private String workEffortGoodStdType;
+    private String workEffortId;
+    private String productId;
+    private String workEffortGoodStdTypeId;
     private LocalDateTime fromDate;
 }

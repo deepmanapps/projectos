@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkEffortCostCalcId implements Serializable {
-    private String workEffort;
-    private String costComponentType;
+    private String workEffortId;
+    private String costComponentTypeId;
     private LocalDateTime fromDate;
 }

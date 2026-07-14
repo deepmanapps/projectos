@@ -2,7 +2,6 @@ package io.deepmanapps.projectos.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,12 +11,16 @@ import java.time.LocalDateTime;
 public class WorkEffortEventReminderJpaEntity {
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "workEffortId")
-    private WorkEffortJpaEntity workEffort;
+    @Column(name = "work_effort_id")
+    private String workEffortId;
 
     @Id
+    @Column(name = "sequence_id")
     private String sequenceId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "work_effort_id", insertable = false, updatable = false)
+    private WorkEffortJpaEntity workEffort;
 
     private LocalDateTime reminderDateTime;
     private Long repeatCount;

@@ -10,7 +10,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkEffortTransBoxId implements Serializable {
-    private String processWorkEffort;
+    private String processWorkEffortId;
     private String toActivityId;
     private String transitionId;
 }

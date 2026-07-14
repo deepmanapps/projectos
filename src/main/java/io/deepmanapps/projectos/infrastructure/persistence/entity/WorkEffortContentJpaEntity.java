@@ -2,7 +2,6 @@ package io.deepmanapps.projectos.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,22 +11,32 @@ import java.time.LocalDateTime;
 public class WorkEffortContentJpaEntity {
 
     @Id
+    @Column(name = "work_effort_id")
+    private String workEffortId;
+
+    @Id
+    @Column(name = "content_id")
+    private String contentId;
+
+    @Id
+    @Column(name = "work_effort_content_type_id")
+    private String workEffortContentTypeId;
+
+    @Id
+    @Column(name = "from_date")
+    private LocalDateTime fromDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "workEffortId")
+    @JoinColumn(name = "work_effort_id", insertable = false, updatable = false)
     private WorkEffortJpaEntity workEffort;
 
-    @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "contentId")
+    @JoinColumn(name = "content_id", insertable = false, updatable = false)
     private ContentJpaEntity content;
 
-    @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "workEffortContentTypeId")
+    @JoinColumn(name = "work_effort_content_type_id", insertable = false, updatable = false)
     private WorkEffortContentTypeJpaEntity workEffortContentType;
-
-    @Id
-    private LocalDateTime fromDate;
 
     private LocalDateTime thruDate;
 }

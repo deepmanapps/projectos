@@ -2,7 +2,6 @@ package io.deepmanapps.projectos.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,22 +11,32 @@ import java.time.LocalDateTime;
 public class WorkEffortPartyAssignmentJpaEntity {
 
     @Id
+    @Column(name = "work_effort_id")
+    private String workEffortId;
+
+    @Id
+    @Column(name = "party_id")
+    private String partyId;
+
+    @Id
+    @Column(name = "role_type_id")
+    private String roleTypeId;
+
+    @Id
+    @Column(name = "from_date")
+    private LocalDateTime fromDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "workEffortId")
+    @JoinColumn(name = "work_effort_id", insertable = false, updatable = false)
     private WorkEffortJpaEntity workEffort;
 
-    @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "partyId")
+    @JoinColumn(name = "party_id", insertable = false, updatable = false)
     private PartyJpaEntity party;
 
-    @Id
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "roleTypeId")
+    @JoinColumn(name = "role_type_id", insertable = false, updatable = false)
     private RoleTypeJpaEntity roleType;
-
-    @Id
-    private LocalDateTime fromDate;
 
     private LocalDateTime thruDate;
     private LocalDateTime statusDateTime;

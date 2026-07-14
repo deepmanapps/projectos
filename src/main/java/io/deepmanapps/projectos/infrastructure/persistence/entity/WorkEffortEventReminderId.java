@@ -10,6 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkEffortEventReminderId implements Serializable {
-    private String workEffort;
+    private String workEffortId;
     private String sequenceId;
 }

@@ -2,6 +2,7 @@ package io.deepmanapps.projectos.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import java.util.List;
 
 @Entity
 @Table(name = "work_effort_good_standard_type")
@@ -19,4 +20,7 @@ public class WorkEffortGoodStandardTypeJpaEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parentTypeId")
     private WorkEffortGoodStandardTypeJpaEntity parentType;
+
+    @OneToMany(mappedBy = "workEffortGoodStdType")
+    private List<WorkEffortGoodStandardJpaEntity> goodStandards;
 }

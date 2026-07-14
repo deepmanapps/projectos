@@ -10,12 +10,16 @@ import lombok.Data;
 public class WorkEffortSearchConstraintJpaEntity {
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "workEffortSearchResultId")
-    private WorkEffortSearchResultJpaEntity workEffortSearchResult;
+    @Column(name = "work_effort_search_result_id")
+    private String workEffortSearchResultId;
 
     @Id
+    @Column(name = "constraint_seq_id")
     private String constraintSeqId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "work_effort_search_result_id", insertable = false, updatable = false)
+    private WorkEffortSearchResultJpaEntity workEffortSearchResult;
 
     private String constraintName;
     private String infoString;

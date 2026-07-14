@@ -10,6 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkEffortSearchConstraintId implements Serializable {
-    private String workEffortSearchResult;
+    private String workEffortSearchResultId;
     private String constraintSeqId;
 }

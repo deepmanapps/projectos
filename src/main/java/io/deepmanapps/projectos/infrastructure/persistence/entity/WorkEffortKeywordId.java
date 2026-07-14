@@ -10,6 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkEffortKeywordId implements Serializable {
-    private String workEffort;
+    private String workEffortId;
     private String keyword;
 }

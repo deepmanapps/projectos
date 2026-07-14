@@ -31,17 +31,19 @@ public class WorkEffortAssocAttributeMapper {
         entity.setAttrName(domain.getAttrName());
         entity.setAttrValue(domain.getAttrValue());
         entity.setAttrDescription(domain.getAttrDescription());
-        entity.setWorkEffortAssoc(workEffortAssocMapper.toEntity(domain.getWorkEffortAssoc()));
-        if (domain.getWorkEffortAssoc() != null && domain.getWorkEffortAssoc().getWorkEffortFrom() != null) {
-            entity.setWorkEffortIdFrom(domain.getWorkEffortAssoc().getWorkEffortFrom().getWorkEffortId());
-        }
-        if (domain.getWorkEffortAssoc() != null && domain.getWorkEffortAssoc().getWorkEffortTo() != null) {
-            entity.setWorkEffortIdTo(domain.getWorkEffortAssoc().getWorkEffortTo().getWorkEffortId());
-        }
+        
         if (domain.getWorkEffortAssoc() != null) {
+            entity.setWorkEffortAssoc(workEffortAssocMapper.toEntity(domain.getWorkEffortAssoc()));
+            if (domain.getWorkEffortAssoc().getWorkEffortFrom() != null) {
+                entity.setWorkEffortIdFrom(domain.getWorkEffortAssoc().getWorkEffortFrom().getWorkEffortId());
+            }
+            if (domain.getWorkEffortAssoc().getWorkEffortTo() != null) {
+                entity.setWorkEffortIdTo(domain.getWorkEffortAssoc().getWorkEffortTo().getWorkEffortId());
+            }
             entity.setWorkEffortAssocTypeId(domain.getWorkEffortAssoc().getWorkEffortAssocTypeId());
             entity.setFromDate(domain.getWorkEffortAssoc().getFromDate());
         }
+
         return entity;
     }
 }

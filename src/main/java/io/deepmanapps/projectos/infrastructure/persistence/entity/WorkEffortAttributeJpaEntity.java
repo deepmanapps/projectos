@@ -10,13 +10,16 @@ import lombok.Data;
 public class WorkEffortAttributeJpaEntity {
 
     @Id
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "workEffortId")
-    private WorkEffortJpaEntity workEffort;
+    @Column(name = "work_effort_id")
+    private String workEffortId;
 
     @Id
     @Column(name = "attr_name")
     private String attrName;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "work_effort_id", insertable = false, updatable = false)
+    private WorkEffortJpaEntity workEffort;
 
     @Column(name = "attr_value")
     private String attrValue;

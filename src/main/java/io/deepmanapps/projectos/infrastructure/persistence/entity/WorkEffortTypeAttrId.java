@@ -10,6 +10,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WorkEffortTypeAttrId implements Serializable {
-    private String workEffortType;
+    private String workEffortTypeId;
     private String attrName;
 }

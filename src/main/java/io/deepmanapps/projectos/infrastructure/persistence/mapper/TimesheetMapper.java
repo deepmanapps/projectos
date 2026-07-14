@@ -3,12 +3,13 @@ package io.deepmanapps.projectos.infrastructure.persistence.mapper;
 import io.deepmanapps.projectos.domain.model.Timesheet;
 import io.deepmanapps.projectos.infrastructure.persistence.entity.TimesheetJpaEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
 @Component
-@RequiredArgsConstructor
+@RequiredArgsConstructor(onConstructor_ = {@Lazy})
 public class TimesheetMapper {
 
     private final TimeEntryMapper timeEntryMapper;
@@ -45,8 +46,14 @@ public class TimesheetMapper {
         entity.setComments(domain.getComments());
         entity.setFromDate(domain.getFromDate());
         entity.setThruDate(domain.getThruDate());
-        entity.setTimeEntries(domain.getTimeEntries() != null ? domain.getTimeEntries().stream().map(timeEntryMapper::toEntity).collect(Collectors.toList()) : null);
-        entity.setRoles(domain.getRoles() != null ? domain.getRoles().stream().map(timesheetRoleMapper::toEntity).collect(Collectors.toList()) : null);
+        if (domain.getTimeEntries() != null) {
+            entity.setTimeEntries(domain.getTimeEntries().stream().map(timeEntryMapper::toEntity).collect(Collectors.toList()));
+            entity.getTimeEntries().forEach(t -> t.setTimesheet(entity));
+        }
+        if (domain.getRoles() != null) {
+            entity.setRoles(domain.getRoles().stream().map(timesheetRoleMapper::toEntity).collect(Collectors.toList()));
+            entity.getRoles().forEach(r -> r.setTimesheet(entity));
+        }
         return entity;
     }
 }
