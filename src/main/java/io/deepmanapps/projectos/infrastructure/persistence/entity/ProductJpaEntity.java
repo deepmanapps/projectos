@@ -11,4 +11,8 @@ import lombok.Data;
 public class ProductJpaEntity {
     @Id
     private String productId;
+
+    private String productName;
+
+    private String description;
 }
