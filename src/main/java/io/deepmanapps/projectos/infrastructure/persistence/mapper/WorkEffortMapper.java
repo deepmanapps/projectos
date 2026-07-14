@@ -32,10 +32,56 @@ public class WorkEffortMapper {
     public WorkEffort toDomain(WorkEffortJpaEntity entity) {
         if (entity == null) return null;
         return WorkEffort.builder()
-                // All scalar fields
                 .workEffortId(entity.getWorkEffortId())
-                // ... (all other scalar fields)
-                // All collection fields
+                .workEffortTypeId(entity.getWorkEffortTypeId())
+                .workEffortPurposeTypeId(entity.getWorkEffortPurposeTypeId())
+                .currentStatusId(entity.getCurrentStatusId())
+                .scopeEnumId(entity.getScopeEnumId())
+                .showAsEnumId(entity.getShowAsEnumId())
+                .estimateCalcMethod(entity.getEstimateCalcMethod())
+                .moneyUomId(entity.getMoneyUomId())
+                .universalId(entity.getUniversalId())
+                .sourceReferenceId(entity.getSourceReferenceId())
+                .facilityId(entity.getFacilityId())
+                .infoUrl(entity.getInfoUrl())
+                .tempExprId(entity.getTempExprId())
+                .runtimeDataId(entity.getRuntimeDataId())
+                .noteId(entity.getNoteId())
+                .serviceLoaderName(entity.getServiceLoaderName())
+                .accommodationMapId(entity.getAccommodationMapId())
+                .accommodationSpotId(entity.getAccommodationSpotId())
+                .createdByUserLogin(entity.getCreatedByUserLogin())
+                .lastModifiedByUserLogin(entity.getLastModifiedByUserLogin())
+                .priority(entity.getPriority())
+                .percentComplete(entity.getPercentComplete())
+                .revisionNumber(entity.getRevisionNumber())
+                .sendNotificationEmail(entity.getSendNotificationEmail())
+                .workEffortName(entity.getWorkEffortName())
+                .description(entity.getDescription())
+                .locationDesc(entity.getLocationDesc())
+                .specialTerms(entity.getSpecialTerms())
+                .lastStatusUpdate(entity.getLastStatusUpdate())
+                .estimatedStartDate(entity.getEstimatedStartDate())
+                .estimatedCompletionDate(entity.getEstimatedCompletionDate())
+                .actualStartDate(entity.getActualStartDate())
+                .actualCompletionDate(entity.getActualCompletionDate())
+                .createdDate(entity.getCreatedDate())
+                .lastModifiedDate(entity.getLastModifiedDate())
+                .estimatedMilliSeconds(entity.getEstimatedMilliSeconds())
+                .estimatedSetupMillis(entity.getEstimatedSetupMillis())
+                .actualMilliSeconds(entity.getActualMilliSeconds())
+                .actualSetupMillis(entity.getActualSetupMillis())
+                .totalMilliSecondsAllowed(entity.getTotalMilliSecondsAllowed())
+                .totalMoneyAllowed(entity.getTotalMoneyAllowed())
+                .quantityToProduce(entity.getQuantityToProduce())
+                .quantityProduced(entity.getQuantityProduced())
+                .quantityRejected(entity.getQuantityRejected())
+                .reservPersons(entity.getReservPersons())
+                .reserv2ndPPPerc(entity.getReserv2ndPPPerc())
+                .reservNthPPPerc(entity.getReservNthPPPerc())
+                .timeTransparency(entity.getTimeTransparency())
+                .fixedAssetId(entity.getFixedAssetId())
+                .recurrenceInfoId(entity.getRecurrenceInfoId())
                 .parent(toDomain(entity.getParent()))
                 .timeEntries(entity.getTimeEntries() != null ? entity.getTimeEntries().stream().map(timeEntryMapper::toDomain).collect(Collectors.toList()) : null)
                 .associationsFrom(entity.getAssociationsFrom() != null ? entity.getAssociationsFrom().stream().map(workEffortAssocMapper::toDomain).collect(Collectors.toList()) : null)
@@ -60,12 +106,64 @@ public class WorkEffortMapper {
     public WorkEffortJpaEntity toEntity(WorkEffort domain) {
         if (domain == null) return null;
         WorkEffortJpaEntity entity = new WorkEffortJpaEntity();
-        // All scalar fields
+        
         entity.setWorkEffortId(domain.getWorkEffortId());
-        // ... (all other scalar fields)
-        // All collection fields
+        entity.setWorkEffortTypeId(domain.getWorkEffortTypeId());
+        entity.setWorkEffortPurposeTypeId(domain.getWorkEffortPurposeTypeId());
+        entity.setCurrentStatusId(domain.getCurrentStatusId());
+        entity.setScopeEnumId(domain.getScopeEnumId());
+        entity.setShowAsEnumId(domain.getShowAsEnumId());
+        entity.setEstimateCalcMethod(domain.getEstimateCalcMethod());
+        entity.setMoneyUomId(domain.getMoneyUomId());
+        entity.setUniversalId(domain.getUniversalId());
+        entity.setSourceReferenceId(domain.getSourceReferenceId());
+        entity.setFacilityId(domain.getFacilityId());
+        entity.setInfoUrl(domain.getInfoUrl());
+        entity.setTempExprId(domain.getTempExprId());
+        entity.setRuntimeDataId(domain.getRuntimeDataId());
+        entity.setNoteId(domain.getNoteId());
+        entity.setServiceLoaderName(domain.getServiceLoaderName());
+        entity.setAccommodationMapId(domain.getAccommodationMapId());
+        entity.setAccommodationSpotId(domain.getAccommodationSpotId());
+        entity.setCreatedByUserLogin(domain.getCreatedByUserLogin());
+        entity.setLastModifiedByUserLogin(domain.getLastModifiedByUserLogin());
+        entity.setPriority(domain.getPriority());
+        entity.setPercentComplete(domain.getPercentComplete());
+        entity.setRevisionNumber(domain.getRevisionNumber());
+        entity.setSendNotificationEmail(domain.getSendNotificationEmail());
+        entity.setWorkEffortName(domain.getWorkEffortName());
+        entity.setDescription(domain.getDescription());
+        entity.setLocationDesc(domain.getLocationDesc());
+        entity.setSpecialTerms(domain.getSpecialTerms());
+        entity.setLastStatusUpdate(domain.getLastStatusUpdate());
+        entity.setEstimatedStartDate(domain.getEstimatedStartDate());
+        entity.setEstimatedCompletionDate(domain.getEstimatedCompletionDate());
+        entity.setActualStartDate(domain.getActualStartDate());
+        entity.setActualCompletionDate(domain.getActualCompletionDate());
+        entity.setCreatedDate(domain.getCreatedDate());
+        entity.setLastModifiedDate(domain.getLastModifiedDate());
+        entity.setEstimatedMilliSeconds(domain.getEstimatedMilliSeconds());
+        entity.setEstimatedSetupMillis(domain.getEstimatedSetupMillis());
+        entity.setActualMilliSeconds(domain.getActualMilliSeconds());
+        entity.setActualSetupMillis(domain.getActualSetupMillis());
+        entity.setTotalMilliSecondsAllowed(domain.getTotalMilliSecondsAllowed());
+        entity.setTotalMoneyAllowed(domain.getTotalMoneyAllowed());
+        entity.setQuantityToProduce(domain.getQuantityToProduce());
+        entity.setQuantityProduced(domain.getQuantityProduced());
+        entity.setQuantityRejected(domain.getQuantityRejected());
+        entity.setReservPersons(domain.getReservPersons());
+        entity.setReserv2ndPPPerc(domain.getReserv2ndPPPerc());
+        entity.setReservNthPPPerc(domain.getReservNthPPPerc());
+        entity.setTimeTransparency(domain.getTimeTransparency());
+        entity.setFixedAssetId(domain.getFixedAssetId());
+        entity.setRecurrenceInfoId(domain.getRecurrenceInfoId());
+        
         entity.setParent(toEntity(domain.getParent()));
-        // ... (similar mapping for all collections, ensuring bi-directional consistency)
+        
+        // Note: For collections, the mapping is often handled by the owning side of the relationship
+        // to avoid infinite loops and ensure correctness, but we can set them here if needed,
+        // ensuring the back-reference is also set on the child side.
+
         return entity;
     }
 }

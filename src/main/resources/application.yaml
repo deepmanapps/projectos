@@ -10,3 +10,7 @@ spring:
   h2:
     console:
       enabled: true # This enables the /h2-console endpoint
+  jpa:
+    show-sql: true # Show SQL in the logs
+    hibernate:
+      ddl-auto: update # This is the key change
